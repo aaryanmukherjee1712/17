@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mini GTA</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+}
+
+#world{
+    width:2000px;
+    height:2000px;
+    position:relative;
+    background:#4caf50;
+}
+
+.road{
+    position:absolute;
+    background:#555;
+}
+
+.building{
+    position:absolute;
+    background:#999;
+    border:3px solid #666;
+}
+
+#player{
+    width:40px;
+    height:40px;
+    background:red;
+    position:absolute;
+    left:100px;
+    top:100px;
+    z-index:100;
+}
+</style>
+</head>
+
+<body>
+
+<div id="world">
+
+<div class="road" style="left:0;top:300px;width:2000px;height:120px;"></div>
+<div class="road" style="left:800px;top:0;width:120px;height:2000px;"></div>
+
+<div class="building" style="left:100px;top:100px;width:200px;height:200px;"></div>
+<div class="building" style="left:1200px;top:200px;width:300px;height:250px;"></div>
+<div class="building" style="left:400px;top:800px;width:250px;height:250px;"></div>
+<div class="building" style="left:1400px;top:1000px;width:300px;height:200px;"></div>
+
+<div id="player"></div>
+
+</div>
+
+<script>
+const player=document.getElementById("player");
+
+let x=500;
+let y=500;
+const speed=10;
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="w" || e.key==="ArrowUp") y-=speed;
+if(e.key==="s" || e.key==="ArrowDown") y+=speed;
+if(e.key==="a" || e.key==="ArrowLeft") x-=speed;
+if(e.key==="d" || e.key==="ArrowRight") x+=speed;
+
+player.style.left=x+"px";
+player.style.top=y+"px";
+
+window.scrollTo(x-300,y-300);
+
+});
+</script>
+
+</body>
+</html>
